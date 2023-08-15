@@ -1,4 +1,5 @@
-insert single row
+insert single row \
+action output 会显示 xx row(s) affected, 最后的变动呈现要从原表点开查看
 ```sql
 use sql_store;
 insert into customers
@@ -31,7 +32,6 @@ values(
     "city",
     "CA")
 ```
-action output 会显示 xx row(s) affected, 最后的变动呈现要从原表点开查看
 
 insert multiple rows
 ```sql
@@ -41,12 +41,12 @@ values ("product 1", 10, 1.95),
        ("product 2", 11, 1.95),
        ("product 3", 12, 1.95)
 ```
-inserting hierarchy rows
-order 1 ------- product 1
-        ------- product 2
-order 2 ------- product 5
-        ------- product 9
-	------- product 12
+inserting hierarchy rows \
+order 1 ------- product 1 \
+order 1 ------- product 2 \
+order 2 ------- product 5 \
+order 2 ------- product 9 \
+order 2 ------- product 12
  ```sql
 use sql_store;
 INSERT INTO orders (customer_id, order_date, status)
