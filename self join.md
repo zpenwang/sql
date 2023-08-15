@@ -11,7 +11,7 @@ join employees m
 ```
 
 ### self outer join
-self join won't return the record of the manager, while self outer join
+self join cannnot return the record of the manager, while self outer join can get every employee in the table whether they have a manager or not
 ```sql
 use sql_hr;
 select
