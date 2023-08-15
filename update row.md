@@ -12,3 +12,15 @@ update invoices
 set payment_total = invoice_total * 0.5, payment_date = due_date
 where client_id in (3,4) -- optional
 ```
+Using subqueries in updates
+```sql
+use sql_invoicing;
+update invoices
+set
+   payment_total = invoice_total * 0.5,
+   payment_date = due_date
+WHERE client_id in
+                (select client_id
+                from clients
+                where state in ("CA","NY"))
+```
