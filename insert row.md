@@ -41,3 +41,19 @@ values ("product 1", 10, 1.95),
        ("product 2", 11, 1.95),
        ("product 3", 12, 1.95)
 ```
+inserting hierarchy rows
+order 1 ------- product 1
+        ------- product 2
+order 2 ------- product 5
+        ------- product 9
+	------- product 12
+ ```sql
+use sql_store;
+INSERT INTO orders (customer_id, order_date, status)
+values(1, "2019-01-02", 1);
+
+INSERT INTO order_items
+VALUES
+    (LAST_INSERT_ID(), 1, 1, 2.95),  -- LAST_INSERT_ID() returns the ID number when inserting a new row,这里返回的是新插入order的序号
+    (LAST_INSERT_ID(), 2, 1, 3.95)
+```
