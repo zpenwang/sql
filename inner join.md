@@ -7,6 +7,14 @@ JOIN orders o
 -- USING (customer_id)
 ```
 
+implicit join syntax
+```sql
+use sql_store;
+select *
+from orders o, customers c
+where o.customer_id = c.customer_id
+```
+
 composite keys, compound join conditions
 ```sql
 ```sql
@@ -26,3 +34,4 @@ from order_items oi
 join sql_inventory.products p
     on oi.product_id = p.product_id
 ```
+
