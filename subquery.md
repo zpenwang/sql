@@ -1,4 +1,5 @@
 可以类比为 内层函数-外层函数
+遍历的意味
 ### subrequery returns a single value
 找出比id = 3产品价格还要高的产品
 ```sql
@@ -22,7 +23,7 @@ where salary > (
  )
 ```
 ### subrequery returns a list
-Find the products that have never been ordered
+Find products that have never been ordered
 ```sql
 use sql_store;
 select *
