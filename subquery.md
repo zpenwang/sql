@@ -32,3 +32,22 @@ where product_id not in (
     from order_items
  )
 ```
+Find customers who have ordered lettuce (id = 3)
+```sql
+select *
+from customers c
+where customer_id in (
+    select o.customer_id
+    from order_items oi
+    join orders o using(order_id)
+    where product_id = 3
+)
+```
+```sql
+use sql_store;
+select distinct customer_id, first_name, last_name
+from customers c
+join orders o using(customer_id)
+join order_items oi using(order_id)
+where oi.product_id = 3
+```
