@@ -52,6 +52,7 @@ join order_items oi using(order_id)
 where oi.product_id = 3
 ```
 ### correlated subquery
+get invoices that are larger than the client's average invoice amount
 ```sql
 use sql_hr;
 select *
@@ -75,3 +76,4 @@ non-correlated subquery的执行流程：
 4. 返回比较结果
    
 综上， correlated/ non-correlated subquery 都是一种遍历的机制
+https://www.cnblogs.com/heenhui2016/p/10574695.html
