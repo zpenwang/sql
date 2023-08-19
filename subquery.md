@@ -1,5 +1,4 @@
 可以类比为 内层函数-外层函数
-遍历的意味
 ### subrequery returns a single value
 找出比id = 3产品价格还要高的产品
 ```sql
@@ -52,3 +51,27 @@ join orders o using(customer_id)
 join order_items oi using(order_id)
 where oi.product_id = 3
 ```
+### correlated subquery
+```sql
+use sql_hr;
+select *
+from employees e
+where salary > (
+   select avg(salary)
+   from employees e
+   where office_id = e.office_id
+)
+```
+correlated subquery的执行流程：
+1. 从外层查询取一行记录 
+2. 将记录字段值传入内层子查询进行计算 
+3. 返回计算结果与外层查询进行比较 
+4. 取外层查询下一行,重复步骤2-3 
+    
+non-correlated subquery的执行流程：
+1. 首先执行子查询,计算平均价格 
+2. 存储子查询的结果 
+3. 对外层查询的每一行,读取子查询结果比较price字段 
+4. 返回比较结果
+   
+综上， correlated/ non-correlated subquery 都是一种遍历的机制
