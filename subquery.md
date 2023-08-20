@@ -80,3 +80,26 @@ non-correlated subquery的执行流程：
 https://www.cnblogs.com/heenhui2016/p/10574695.html
 
 in select statement
+select 语句 聚合非聚合同时出现 不用groupby 运行不了
+```sql
+use sql_invoicing;
+select 
+	invoice_id,
+	invoice_total,
+	(select avg(invoice_total) from invoices) as invoice_average,    --- 在invoice_average这一列每一行的值都返回avg的值
+	invoice_total - (select invoice_average) as difference
+from invoices
+```
+```sql
+use sql_invoicing;
+select 
+    client_id,
+    name,
+    (select sum(invoice_total) 
+			from invoices
+            where client_id = c.client_id )as total_sales,
+	(select avg(total_sales) from invoices) as average,
+	(select total_sales) - (select average) as difference
+from clients c
+```
+
