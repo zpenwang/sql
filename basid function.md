@@ -39,3 +39,19 @@ date_add（now(), interval 1 day）
 date_sub（now(), interval 1 day）
 datediff("2019-01-05", "2019-01-01")  前面的时间剪去后面的时间
 time_to_sec("09:00") - time_to_sec("09:02")
+ifnull函数
+```sql
+use sql_store;
+select 
+    order_id,
+    ifnull(shipper_id, "Not assigned") as shipper
+from orders
+```
+coalesce函数
+```sql
+use sql_store;
+select 
+    order_id,
+    coalesce(shipper_id, comments, "Not assigned") as shipper  -- return first nom-sull value in the list
+from orders
+```
