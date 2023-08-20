@@ -1,5 +1,6 @@
 可以类比为 内层函数-外层函数
-### subrequery returns a single value
+in where statement
+### subquery returns a single value
 找出比id = 3产品价格还要高的产品
 ```sql
 use sql_store;
@@ -77,3 +78,5 @@ non-correlated subquery的执行流程：
    
 综上， correlated/ non-correlated subquery 都是一种遍历的机制
 https://www.cnblogs.com/heenhui2016/p/10574695.html
+
+in select statement
